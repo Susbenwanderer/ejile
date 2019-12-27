@@ -19,7 +19,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public int addShoppingCartItem(ShoppingCart shoppingCart) {
-        String sql = "insert into shoppingCart values(?, ?, ?, ?)";
+        String sql = "insert into shoppingcart values(?, ?, ?, ?)";
         Object[] args = {
                 shoppingCart.getCid(),
                 shoppingCart.getGid(),
@@ -38,7 +38,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public int updateShoppingCartItem(ShoppingCart shoppingCart) {
-        String sql = "update shoppingCart set num=?, total=? where cid=? and gid=?";
+        String sql = "update shoppingcart set num=?, total=? where cid=? and gid=?";
         Object[] args = {
                 shoppingCart.getNum(),
                 shoppingCart.getTotal(),
@@ -56,7 +56,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public int deleteShoppingCartItemById(Integer cid, Integer gid) {
-        String sql = "delete from shoppingCart where cid=? and gid=?";
+        String sql = "delete from shoppingcart where cid=? and gid=?";
         Object[] args = { cid, gid};
         int[] argTypes = {
                 Types.INTEGER,
@@ -67,7 +67,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public int clearShoppingCart(Integer cid) {
-        String sql = "delete from shoppingCart where cid=?";
+        String sql = "delete from shoppingcart where cid=?";
         Object[] args = {cid};
         int[] argTypes = {Types.INTEGER};
         return this.jdbcTemplate.update(sql, args, argTypes);
@@ -75,7 +75,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public int clearShoppingCartByCidSid(Integer cid, Integer sid) {
-        String sql = "delete from shoppingCart where cid=? and GID in (select GID from goods where sId = ?)";
+        String sql = "delete from shoppingcart where cid=? and GID in (select GID from goods where sId = ?)";
         Object[] args = {cid, sid};
         int[] argTypes = {Types.INTEGER, Types.INTEGER};
         return this.jdbcTemplate.update(sql, args, argTypes);

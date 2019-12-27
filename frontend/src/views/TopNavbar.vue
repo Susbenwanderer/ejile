@@ -128,6 +128,7 @@
 
 <script>
 import store from '../store'
+import { Notification } from 'element-ui'
 export default {
   name: 'TopNavbar',
   data() {
@@ -156,11 +157,27 @@ export default {
     }
   },
   created() {
+    const that = this
     if ((typeof this.userToken === 'string')) {
       if ('WebSocket' in window) {
-        this.$root.$myWebscoket = new WebSocket('ws://localhost:8080/ejile/chat?token=' + this.userToken.valueOf())
+        this.$root.$myWebscoket = new WebSocket('ws://localhost:8080/ejile/myWebSocket?token=' + this.userToken.valueOf())
         this.$root.$myWebscoket.onmessage = function(res) {
-          console.log(res)
+          if (that.$route.path !== '/consumerinfo/contact') {
+            const data = JSON.parse(res.data)
+            if (data.state === '1') {
+              Notification({
+                title: '提示',
+                message: '有商家给您发来了信息!',
+                duration: 2000
+              })
+            } else {
+              Notification({
+                title: '提示',
+                message: '有用户给您发来了信息!',
+                duration: 2000
+              })
+            }
+          }
         }
       }
     }

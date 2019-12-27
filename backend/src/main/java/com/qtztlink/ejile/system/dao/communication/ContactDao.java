@@ -13,5 +13,4 @@ public interface ContactDao extends JpaRepository<Contact, Integer>, JpaSpecific
     List<Contact> findAllBySidEquals(Integer sid);
 
     List<Contact> findAllByCidEquals(Integer cid);
-
 }

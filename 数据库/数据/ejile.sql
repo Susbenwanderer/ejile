@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 阿里云ces
+ Source Server         : 阿里云
  Source Server Type    : MySQL
  Source Server Version : 80017
  Source Host           : 120.27.243.204:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 25/11/2019 16:59:29
+ Date: 27/12/2019 09:53:58
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `admin`  (
   `aPassword` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`aId`) USING BTREE,
   UNIQUE INDEX `table_name_aName_uindex`(`aName`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
@@ -50,7 +50,7 @@ CREATE TABLE `commentary`  (
   INDEX `SID`(`SID`) USING BTREE,
   CONSTRAINT `commentary_ibfk_1` FOREIGN KEY (`Cid`) REFERENCES `consumer` (`cId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `commentary_ibfk_2` FOREIGN KEY (`SID`) REFERENCES `shop` (`sId`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of commentary
@@ -99,6 +99,8 @@ INSERT INTO `consumer` VALUES (10, 'hyttyh', NULL, 13, '14567432786', NULL, NULL
 INSERT INTO `consumer` VALUES (17, 'lizn', NULL, NULL, '12345678908', NULL, NULL, 'haode', 0.00);
 INSERT INTO `consumer` VALUES (20, 'atom', '男', 1, '15396277909', '123@mail', '465664', '4c9d7078a7be0f6fb30c1128210cc01e', 0.00);
 INSERT INTO `consumer` VALUES (21, 'test', NULL, NULL, '13826539608', NULL, NULL, '3e4b7f2e79bbb0fc5528c2ca5110a887', 0.00);
+INSERT INTO `consumer` VALUES (22, '123456', NULL, NULL, '13433647567', NULL, NULL, 'bf4274fff97184978871696abce1935a', 0.00);
+INSERT INTO `consumer` VALUES (24, 'smile', NULL, NULL, '15625853354', NULL, NULL, 'de1bec463d167c056fbfdd35f114ae09', 0.00);
 
 -- ----------------------------
 -- Table structure for consumerreply
@@ -129,27 +131,74 @@ INSERT INTO `consumerreply` VALUES (20, 3, '2019-11-20 11:23:17', '可恶');
 -- ----------------------------
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact`  (
-  `CID` int(11) NOT NULL,
-  `SID` int(11) NOT NULL,
-  `CTime` datetime(0) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cid` int(11) NOT NULL,
+  `c_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `sid` int(11) NOT NULL,
+  `s_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `c_time` datetime(0) NOT NULL,
   `content` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `CState` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`CID`, `SID`, `CTime`) USING BTREE,
-  INDEX `SID`(`SID`) USING BTREE,
-  CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `consumer` (`cId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `contact_ibfk_2` FOREIGN KEY (`SID`) REFERENCES `shop` (`sId`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `c_state` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `is_read` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `SID`(`sid`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of contact
 -- ----------------------------
-INSERT INTO `contact` VALUES (21, 1, '2019-11-15 15:44:11', 'test', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-15 16:37:20', '1111', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-15 16:38:47', '11111', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-16 10:30:11', 'a', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-16 10:30:14', 'sdads', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-16 10:30:18', 'dsad', '0');
-INSERT INTO `contact` VALUES (21, 1, '2019-11-16 10:30:51', 'd', '0');
+INSERT INTO `contact` VALUES (1, 21, 'test', 1, 'mai', '2019-11-15 15:44:11', 'test', '0', '1');
+INSERT INTO `contact` VALUES (2, 21, 'test', 1, 'mai', '2019-11-15 16:37:20', '1111', '0', '1');
+INSERT INTO `contact` VALUES (3, 21, 'test', 1, 'mai', '2019-11-15 16:38:47', '11111', '0', '1');
+INSERT INTO `contact` VALUES (4, 21, 'test', 1, 'mai', '2019-11-16 10:30:11', 'a', '0', '1');
+INSERT INTO `contact` VALUES (5, 21, 'test', 1, 'mai', '2019-11-16 10:30:14', 'sdads', '0', '1');
+INSERT INTO `contact` VALUES (6, 21, 'test', 1, 'mai', '2019-11-16 10:30:18', 'dsad', '0', '1');
+INSERT INTO `contact` VALUES (7, 21, 'test', 1, 'mai', '2019-11-16 10:30:51', 'd', '0', '1');
+INSERT INTO `contact` VALUES (8, 21, 'test', 1, 'mai', '2019-11-26 15:05:48', '111', '0', '1');
+INSERT INTO `contact` VALUES (9, 21, 'test', 1, 'mai', '2019-11-26 15:36:45', '2', '0', '1');
+INSERT INTO `contact` VALUES (10, 21, 'test', 1, 'mai', '2019-11-28 15:56:41', '3', '0', '1');
+INSERT INTO `contact` VALUES (11, 21, 'test', 1, 'mai', '2019-11-28 15:56:42', '2', '0', '1');
+INSERT INTO `contact` VALUES (12, 21, 'test', 1, 'mai', '2019-11-28 15:56:46', '3', '0', '1');
+INSERT INTO `contact` VALUES (13, 21, 'test', 2, '益合堂', '2019-11-28 16:01:32', 'DSADA', '0', '0');
+INSERT INTO `contact` VALUES (14, 21, 'test', 4, '东北饺子馆', '2019-11-29 09:19:55', '1231', '0', '0');
+INSERT INTO `contact` VALUES (15, 21, 'test', 1, 'mai', '2019-12-06 10:39:06', '111', '0', '1');
+INSERT INTO `contact` VALUES (16, 21, 'test', 1, 'mai', '2019-12-06 10:46:37', 'dasda111111', '0', '1');
+INSERT INTO `contact` VALUES (17, 21, 'test', 1, 'mai', '2019-12-06 10:48:15', '1231231321', '0', '1');
+INSERT INTO `contact` VALUES (18, 21, 'test', 1, 'mai', '2019-12-06 10:49:48', '1', '1', '1');
+INSERT INTO `contact` VALUES (19, 21, 'test', 1, 'mai', '2019-12-06 10:49:52', '111', '0', '1');
+INSERT INTO `contact` VALUES (20, 21, 'test', 1, 'mai', '2019-12-07 09:04:34', '111', '1', '1');
+INSERT INTO `contact` VALUES (21, 21, 'test', 1, 'mai', '2019-12-07 09:04:52', '1111', '1', '1');
+INSERT INTO `contact` VALUES (22, 21, 'test', 1, 'mai', '2019-12-07 09:05:59', '123', '1', '1');
+INSERT INTO `contact` VALUES (23, 21, 'test', 1, 'mai', '2019-12-07 09:08:52', '12312', '1', '1');
+INSERT INTO `contact` VALUES (24, 21, 'test', 1, 'mai', '2019-12-07 09:09:01', '11111111', '1', '1');
+INSERT INTO `contact` VALUES (25, 21, 'test', 1, 'mai', '2019-12-26 15:35:05', '111', '0', '1');
+INSERT INTO `contact` VALUES (26, 21, 'test', 1, 'mai', '2019-12-26 15:36:05', '111', '0', '1');
+INSERT INTO `contact` VALUES (27, 21, 'test', 1, 'mai', '2019-12-26 15:44:45', '11', '0', '1');
+INSERT INTO `contact` VALUES (28, 21, 'test', 1, 'mai', '2019-12-26 15:47:13', '111', '0', '1');
+INSERT INTO `contact` VALUES (29, 21, 'test', 1, 'mai', '2019-12-26 15:49:10', 'test', '0', '1');
+INSERT INTO `contact` VALUES (30, 21, 'test', 1, 'mai', '2019-12-26 15:49:14', 'test', '0', '1');
+INSERT INTO `contact` VALUES (31, 21, 'test', 1, 'mai', '2019-12-26 15:51:29', 'test', '0', '1');
+INSERT INTO `contact` VALUES (32, 21, 'test', 1, 'mai', '2019-12-26 15:51:47', 'test', '0', '1');
+INSERT INTO `contact` VALUES (33, 21, 'test', 1, 'mai', '2019-12-26 15:53:04', 'test', '0', '1');
+INSERT INTO `contact` VALUES (34, 21, 'test', 1, 'mai', '2019-12-26 15:55:10', 'test', '0', '1');
+INSERT INTO `contact` VALUES (35, 21, 'test', 1, 'mai', '2019-12-26 16:03:39', 'test', '0', '1');
+INSERT INTO `contact` VALUES (36, 21, 'test', 1, 'mai', '2019-12-26 16:03:57', 'ok', '1', '1');
+INSERT INTO `contact` VALUES (37, 21, 'test', 1, 'mai', '2019-12-26 16:35:05', '213', '1', '1');
+INSERT INTO `contact` VALUES (38, 21, 'test', 1, 'mai', '2019-12-26 16:50:22', 'test', '1', '1');
+INSERT INTO `contact` VALUES (39, 21, 'test', 1, 'mai', '2019-12-26 16:51:19', 'TEST', '1', '1');
+INSERT INTO `contact` VALUES (40, 21, 'test', 1, 'mai', '2019-12-26 16:52:31', '111', '0', '1');
+INSERT INTO `contact` VALUES (41, 21, 'test', 1, 'mai', '2019-12-26 16:53:16', 'HI', '1', '1');
+INSERT INTO `contact` VALUES (42, 21, 'test', 1, 'mai', '2019-12-26 16:53:54', '1111', '1', '1');
+INSERT INTO `contact` VALUES (43, 21, 'test', 1, 'mai', '2019-12-26 16:54:24', 'test', '1', '1');
+INSERT INTO `contact` VALUES (44, 21, 'test', 1, 'mai', '2019-12-26 16:54:39', 'test', '1', '1');
+INSERT INTO `contact` VALUES (45, 21, 'test', 1, 'mai', '2019-12-26 16:55:19', 'test', '1', '1');
+INSERT INTO `contact` VALUES (46, 21, 'test', 1, 'mai', '2019-12-26 16:56:04', '111', '1', '1');
+INSERT INTO `contact` VALUES (47, 21, 'test', 1, 'mai', '2019-12-26 16:56:31', 'HI', '1', '1');
+INSERT INTO `contact` VALUES (48, 21, 'test', 1, 'mai', '2019-12-26 16:57:12', 'wqeqw', '1', '1');
+INSERT INTO `contact` VALUES (49, 21, 'test', 1, 'mai', '2019-12-26 16:57:32', 'asda', '1', '1');
+INSERT INTO `contact` VALUES (50, 21, 'test', 1, 'mai', '2019-12-26 16:59:13', 'asda', '0', '1');
+INSERT INTO `contact` VALUES (51, 21, 'test', 1, 'mai', '2019-12-26 16:59:18', 'ddd', '1', '0');
+INSERT INTO `contact` VALUES (52, 21, 'test', 1, 'mai', '2019-12-26 17:00:44', 'sadas', '1', '0');
 
 -- ----------------------------
 -- Table structure for goods
@@ -174,7 +223,7 @@ CREATE TABLE `goods`  (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES (3, '炒面', 200.00, 1, '主食', 331, 'http://localhost:8080/ejile/upload/201907160921343.jpg', 0.00, 1, '好康的，也是好吃的');
+INSERT INTO `goods` VALUES (3, '炒面', 200.00, 0, '主食', 332, 'http://localhost:8080/ejile/upload/201907160921343.jpg', 0.00, 1, '好康的，也是好吃的');
 INSERT INTO `goods` VALUES (5, '薄荷', 200.00, 9982, '小吃', 19, 'http://localhost:8080/ejile/upload/201907022119344.jpg', 0.85, 1, '很贵哟，慎重购买');
 INSERT INTO `goods` VALUES (6, '千叶豆腐', 22.00, 13, '主食', 9, 'http://localhost:8080/ejile/upload/201907141207575.jpg', 0.00, 1, 'HYT经常吃');
 INSERT INTO `goods` VALUES (17, '水果捞', 20.00, 11, '小吃', 2, 'http://localhost:8080/ejile/upload/201907022119591.jpg', 0.00, 1, '一会他们就要去买了');
@@ -190,6 +239,23 @@ INSERT INTO `goods` VALUES (30, '薄荷汁', 6.00, 100, '饮料', 8, 'http://loc
 INSERT INTO `goods` VALUES (31, 'fan', 10.00, 9, '主食', 76, 'http://localhost:8080/ejile/upload/201907031009226.jpg', 0.00, 1, '好吃');
 INSERT INTO `goods` VALUES (32, '加滑稽', 12.00, 13, '小吃', 34, 'http://localhost:8080/ejile/upload/201907141439312.jpg', 0.00, 1, '好吃的');
 INSERT INTO `goods` VALUES (33, '千叶豆腐', 22.00, 20, '主食', 86, 'http://localhost:8080/ejile/upload/201907141208245.jpg', 0.00, 1, 'HYT经常吃');
+
+-- ----------------------------
+-- Table structure for message_contact
+-- ----------------------------
+DROP TABLE IF EXISTS `message_contact`;
+CREATE TABLE `message_contact`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `from_id` bigint(20) NULL DEFAULT NULL,
+  `from_user` int(10) NULL DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `message_type` int(1) NULL DEFAULT NULL,
+  `status` int(1) NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `to_id` bigint(20) NULL DEFAULT NULL,
+  `to_user` int(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for orderhistory
@@ -208,7 +274,7 @@ CREATE TABLE `orderhistory`  (
   INDEX `orderhistory_ibfk_1`(`CID`) USING BTREE,
   CONSTRAINT `orderhistory_goods__fk` FOREIGN KEY (`GID`) REFERENCES `goods` (`gId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orderhistory_ibfk_1` FOREIGN KEY (`CID`) REFERENCES `consumer` (`cId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orderhistory
@@ -274,6 +340,8 @@ INSERT INTO `orderhistory` VALUES (61, '待评价', '2019-11-25 23:43:15', 2, 12
 INSERT INTO `orderhistory` VALUES (62, '待评价', '2019-11-25 23:43:15', 1, 30.00, 1, 23);
 INSERT INTO `orderhistory` VALUES (63, '已完成', '2019-11-25 23:43:15', 1, 19.00, 1, 25);
 INSERT INTO `orderhistory` VALUES (64, '待评价', '2019-11-25 23:43:15', 1, 15.00, 1, 26);
+INSERT INTO `orderhistory` VALUES (65, '未完成', '2019-12-26 16:32:57', 1, 200.00, 21, 3);
+INSERT INTO `orderhistory` VALUES (66, '待评价', '2019-12-26 16:34:18', 1, 200.00, 21, 3);
 
 -- ----------------------------
 -- Table structure for shop
@@ -292,7 +360,7 @@ CREATE TABLE `shop`  (
   PRIMARY KEY (`sId`) USING BTREE,
   UNIQUE INDEX `sName`(`sName`) USING BTREE,
   UNIQUE INDEX `shop_sTel_uindex`(`sTel`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of shop
@@ -357,21 +425,20 @@ INSERT INTO `shopreply` VALUES (1, 7, '2019-11-25 17:27:53', 'gjg');
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log`  (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `USERNAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `OPERATION` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `_TIME` int(11) NULL DEFAULT NULL,
-  `METHOD` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `PARAMS` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `IP` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `CREATE_TIME` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 221 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `operation` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `use_time` int(11) NULL DEFAULT NULL,
+  `method` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `params` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 262 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
-INSERT INTO `sys_log` VALUES (1, 'Zhang San', '执行方法一', 0, 'com.qtztlink.ejile.common.controller.Test.methodOne()', '  name: Zhang', '127.0.0.1', '2019-11-15 10:36:35');
 INSERT INTO `sys_log` VALUES (2, '', '用户登录', 28, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: Zhang San  password: 1234', '127.0.0.1', '2019-11-15 10:59:37');
 INSERT INTO `sys_log` VALUES (3, '', '用户购买', 327, 'com.qtztlink.ejile.system.controller.BuyController.confirmItem()', '  CID: 1  GID: 6', '127.0.0.1', '2019-11-15 11:01:57');
 INSERT INTO `sys_log` VALUES (4, '', '用户购买', 290, 'com.qtztlink.ejile.system.controller.BuyController.confirmItem()', '  CID: 1  GID: 33', '127.0.0.1', '2019-11-15 17:04:17');
@@ -591,6 +658,56 @@ INSERT INTO `sys_log` VALUES (217, '', '用户通过密码登录', 36229, 'com.q
 INSERT INTO `sys_log` VALUES (218, '', '用户通过密码登录', 43722, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-16 14:40:08');
 INSERT INTO `sys_log` VALUES (219, '', '用户通过密码登录', 35866, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-16 14:40:08');
 INSERT INTO `sys_log` VALUES (220, '', '用户通过密码登录', 4417, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-16 14:40:13');
+INSERT INTO `sys_log` VALUES (221, '', '用户通过密码登录', 108, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-11-26 09:03:14');
+INSERT INTO `sys_log` VALUES (222, '', '用户通过密码登录', 55, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: mai  password: mai', '127.0.0.1', '2019-11-26 09:03:21');
+INSERT INTO `sys_log` VALUES (223, '', '用户通过密码登录', 129, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: test', '127.0.0.1', '2019-11-26 09:04:37');
+INSERT INTO `sys_log` VALUES (224, '', '用户通过密码登录', 153, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-26 09:04:40');
+INSERT INTO `sys_log` VALUES (225, '', '商家入驻', 129, 'com.qtztlink.ejile.system.controller.SignInController.addAShop()', '  name: test  managerName: 1  telephone: 13826539608  address: dsa  password: 123456', '127.0.0.1', '2019-11-26 09:05:12');
+INSERT INTO `sys_log` VALUES (226, '', '商家通过密码登录', 83, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: test  password: test', '127.0.0.1', '2019-11-26 09:05:17');
+INSERT INTO `sys_log` VALUES (227, '', '商家通过密码登录', 84, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-26 09:05:23');
+INSERT INTO `sys_log` VALUES (228, '', '用户通过密码登录', 25238, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-26 15:05:22');
+INSERT INTO `sys_log` VALUES (229, '', '用户通过密码登录', 25097, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-26 15:05:26');
+INSERT INTO `sys_log` VALUES (230, '', '用户通过密码登录', 212, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:17:04');
+INSERT INTO `sys_log` VALUES (231, '', '用户通过密码登录', 95, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:20:42');
+INSERT INTO `sys_log` VALUES (232, '', '用户通过密码登录', 93, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:24:03');
+INSERT INTO `sys_log` VALUES (233, '', '用户通过密码登录', 5087, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:29');
+INSERT INTO `sys_log` VALUES (234, '', '用户通过密码登录', 5058, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:29');
+INSERT INTO `sys_log` VALUES (235, '', '用户通过密码登录', 5059, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:30');
+INSERT INTO `sys_log` VALUES (236, '', '用户通过密码登录', 15089, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:31');
+INSERT INTO `sys_log` VALUES (237, '', '用户通过密码登录', 82, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:32');
+INSERT INTO `sys_log` VALUES (238, '', '用户通过密码登录', 20072, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:32:32');
+INSERT INTO `sys_log` VALUES (239, '', '用户通过密码登录', 82, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:36:02');
+INSERT INTO `sys_log` VALUES (240, '', '用户通过密码登录', 30064, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:41:49');
+INSERT INTO `sys_log` VALUES (241, '', '用户通过密码登录', 82, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 10:42:15');
+INSERT INTO `sys_log` VALUES (242, '', '用户通过密码登录', 8875, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-27 13:49:24');
+INSERT INTO `sys_log` VALUES (243, '', '用户通过密码登录', 166, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-28 15:34:46');
+INSERT INTO `sys_log` VALUES (244, '', '商家通过密码登录', 15097, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-11-28 15:56:02');
+INSERT INTO `sys_log` VALUES (245, '', '商家通过密码登录', 15074, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-11-28 15:56:03');
+INSERT INTO `sys_log` VALUES (246, '', '商家通过密码登录', 20147, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-11-28 15:56:05');
+INSERT INTO `sys_log` VALUES (247, '', '用户通过密码登录', 87, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-11-28 15:56:35');
+INSERT INTO `sys_log` VALUES (248, '', '用户通过密码登录', 167, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-12-04 17:01:41');
+INSERT INTO `sys_log` VALUES (254, '', '管理员通过密码登录', 251, 'com.qtztlink.ejile.system.controller.LoginController.adminLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-05 14:40:21');
+INSERT INTO `sys_log` VALUES (255, '', '用户通过密码登录', 179, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-12-06 08:41:42');
+INSERT INTO `sys_log` VALUES (256, '', '商家通过密码登录', 115, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-06 09:29:21');
+INSERT INTO `sys_log` VALUES (257, '', '用户通过密码登录', 254, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-12-06 10:37:04');
+INSERT INTO `sys_log` VALUES (258, '', '商家通过密码登录', 291, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-06 10:48:55');
+INSERT INTO `sys_log` VALUES (259, '', '用户通过密码登录', 215, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-12-07 08:53:59');
+INSERT INTO `sys_log` VALUES (260, '', '商家通过密码登录', 130, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-07 09:03:33');
+INSERT INTO `sys_log` VALUES (261, '', '用户通过密码登录', 1020, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: test  password: 123456', '127.0.0.1', '2019-12-26 15:34:47');
+INSERT INTO `sys_log` VALUES (262, '', '商家通过密码登录', 523, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:00:48');
+INSERT INTO `sys_log` VALUES (263, '', '商家通过密码登录', 181, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:03:03');
+INSERT INTO `sys_log` VALUES (264, '', '商家通过密码登录', 275, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:04:46');
+INSERT INTO `sys_log` VALUES (265, '', '管理员通过密码登录', 292, 'com.qtztlink.ejile.system.controller.LoginController.adminLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:07:26');
+INSERT INTO `sys_log` VALUES (266, '', '管理员通过密码登录', 250, 'com.qtztlink.ejile.system.controller.LoginController.adminLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:17:10');
+INSERT INTO `sys_log` VALUES (267, '', '用户注册', 90, 'com.qtztlink.ejile.system.controller.SignInController.addAConsumer()', '  name: 123456  password: 123456  telephone: 13433647567', '127.0.0.1', '2019-12-26 16:23:36');
+INSERT INTO `sys_log` VALUES (268, '', '用户通过密码登录', 91, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: 123456  password: 123456', '127.0.0.1', '2019-12-26 16:23:46');
+INSERT INTO `sys_log` VALUES (269, '', '用户购买', 436, 'com.qtztlink.ejile.system.controller.BuyController.confirmItemWithDate()', '  CID: 21  GID: 3  now: Thu Dec 26 16:32:57 GMT+08:00 2019', '127.0.0.1', '2019-12-26 16:32:58');
+INSERT INTO `sys_log` VALUES (270, '', '用户购买', 231, 'com.qtztlink.ejile.system.controller.BuyController.confirmItemWithDate()', '  CID: 21  GID: 3  now: Thu Dec 26 16:34:18 GMT+08:00 2019', '127.0.0.1', '2019-12-26 16:34:20');
+INSERT INTO `sys_log` VALUES (271, '', '商家接单', 350, 'com.qtztlink.ejile.system.controller.ShopController.confirmOrder()', '  OID: 66', '127.0.0.1', '2019-12-26 16:34:57');
+INSERT INTO `sys_log` VALUES (272, '', '商家通过密码登录', 322, 'com.qtztlink.ejile.system.controller.LoginController.shopLogin()', '  username: mai  password: 123456', '127.0.0.1', '2019-12-26 16:50:00');
+INSERT INTO `sys_log` VALUES (273, '', '用户注册', 206, 'com.qtztlink.ejile.system.controller.SignInController.addAConsumer()', '  name: smile  password: 123456  telephone: 13433647567', '127.0.0.1', '2019-12-27 09:45:41');
+INSERT INTO `sys_log` VALUES (274, '', '用户注册', 94, 'com.qtztlink.ejile.system.controller.SignInController.addAConsumer()', '  name: smile  password: 123456  telephone: 15625853354', '127.0.0.1', '2019-12-27 09:46:06');
+INSERT INTO `sys_log` VALUES (275, '', '用户通过密码登录', 236, 'com.qtztlink.ejile.system.controller.LoginController.consumerLogin()', '  username: smile  password: 123456', '127.0.0.1', '2019-12-27 09:46:15');
 
 -- ----------------------------
 -- View structure for commentary_view
@@ -608,7 +725,7 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `consumerreply_view` AS s
 -- View structure for contact_view
 -- ----------------------------
 DROP VIEW IF EXISTS `contact_view`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `contact_view` AS select `consumer`.`cId` AS `cid`,`shop`.`sId` AS `sid`,`consumer`.`cName` AS `cname`,`shop`.`sName` AS `sname`,`contact`.`CTime` AS `ctime`,`contact`.`CState` AS `state`,`contact`.`content` AS `content` from ((`contact` join `consumer`) join `shop`) where ((`contact`.`SID` = `shop`.`sId`) and (`contact`.`CID` = `consumer`.`cId`));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `contact_view` AS select `consumer`.`cId` AS `cid`,`shop`.`sId` AS `sid`,`consumer`.`cName` AS `cname`,`shop`.`sName` AS `sname`,`contact`.`CTime` AS `ctime`,`contact`.`CState` AS `state`,`contact`.`content` AS `content`,`contact`.`isRead` AS `isRead` from ((`contact` join `consumer`) join `shop`) where ((`contact`.`SID` = `shop`.`sId`) and (`contact`.`CID` = `consumer`.`cId`));
 
 -- ----------------------------
 -- View structure for orderhistory_view

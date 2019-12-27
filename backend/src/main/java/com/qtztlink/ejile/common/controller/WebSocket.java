@@ -1,18 +1,21 @@
 package com.qtztlink.ejile.common.controller;
 
-import com.qtztlink.ejile.common.websocket.MyWebSocket;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.*;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @Component
-@ServerEndpoint(value = "/myWebSocket")
+//@ServerEndpoint(value = "/myWebSocket")
 public class WebSocket {
-    //用来存放每个客户端对应的MyWebSocket对象
-    private static CopyOnWriteArraySet<WebSocket> user = new CopyOnWriteArraySet<WebSocket>();
+    private static CopyOnWriteArraySet<WebSocket> user = new CopyOnWriteArraySet<>();
 
     //与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
@@ -43,5 +46,4 @@ public class WebSocket {
         System.out.println(this.session.getId() + " error...");
         error.printStackTrace();
     }
-
 }

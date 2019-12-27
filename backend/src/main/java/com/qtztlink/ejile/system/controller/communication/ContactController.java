@@ -109,8 +109,9 @@ public class ContactController {
         }
     }
 
-    @PutMapping("/contact/check")
+    @PutMapping("/contact")
     public ResponseBean checkContact(int cid, int sid, String state) {
+        contactService.readContact(cid, sid, state);
         return new ResponseBean()
                 .code(200)
                 .message("Success")

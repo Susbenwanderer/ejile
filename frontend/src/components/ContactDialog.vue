@@ -150,7 +150,8 @@ export default {
     }
     // 设置websocket
     const _this = this
-    this.$webscoket.onmessage = function(res) {
+    // this.$webscoket.onmessage = function(res) {
+    this.$root.$myWebscoket.onmessage = function(res) {
       console.log(res)
       // TODO: 判断是否属于自己的聊天
       const data = JSON.parse(res.data)
@@ -203,7 +204,8 @@ export default {
         this.msg = ''
         this.nowContactList.push(params)
         // TODO: 广播通知所有用户
-        this.$webscoket.send(JSON.stringify(params))
+        // this.$webscoket.send(JSON.stringify(params))
+        this.$root.$myWebscoket.send(JSON.stringify(params))
       }).then(err => console.log(err))
     },
     toggleFriend(otherUser) {

@@ -6,10 +6,22 @@ import com.qtztlink.ejile.system.service.communication.ContactService;
 import com.qtztlink.ejile.system.service.user.ConsumerService;
 import com.qtztlink.ejile.system.service.user.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Service("contactService")
 public class ContactServiceImpl implements ContactService {
@@ -42,5 +54,29 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public List<Contact> queryContactByCID(Integer CID) {
         return contactDao.findAllByCidEquals(CID);
+    }
+
+    @Override
+    public void readContact(int cid, int sid, String state) {
+        Specification<Contact> specification=new Specification<Contact>() {
+            @Override
+            public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
+                List<Predicate> list = new ArrayList<>();
+                list.add(cb.equal(root.get("sid"),sid));
+                list.add(cb.equal(root.get("cid"),cid));
+                list.add(cb.equal(root.get("state"),state));
+                list.add(cb.equal(root.get("isRead"),"0"));
+                Predicate[] p = new Predicate[list.size()];
+                return cb.and(list.toArray(p));
+            }
+        };
+        List<Contact> contacts=contactDao.findAll(specification);
+        ListIterator<Contact> iterator = contacts.listIterator();
+        while(iterator.hasNext()){
+            Contact contact=iterator.next();
+            contact.setIsRead("1");
+            iterator.set(contact);
+        }
+        contactDao.saveAll(contacts);
     }
 }

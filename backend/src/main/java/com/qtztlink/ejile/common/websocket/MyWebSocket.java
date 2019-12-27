@@ -34,15 +34,21 @@ public class MyWebSocket extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         String userId = getUserId(session);
-        userSession.put(userId, session);
+        String userRole = getUserRole(session);
+        String key = userRole + userId;
+        System.out.println(key+"----open");
+        userSession.put(key, session);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         String userId = getUserId(session);
-        if (userSession.get(userId) != null) {
-            userSession.remove(userId);
+        String userRole = getUserRole(session);
+        String key = userRole + userId;
+        if (userSession.get(key) != null) {
+            userSession.remove(key);
         }
+        System.out.println(key+"----close");
     }
 
     @Override
@@ -53,7 +59,13 @@ public class MyWebSocket extends TextWebSocketHandler {
     }
 
     static void redisSendToUser(MessageContact messageEntity) throws IOException {
-        WebSocketSession webSocketSession = userSession.get(messageEntity.getToUser());
+        String key;
+        if ("1".equals(messageEntity.getState())){
+            key="consumer"+messageEntity.getCid();
+        }else{
+            key="shop"+messageEntity.getSid();
+        }
+        WebSocketSession webSocketSession = userSession.get(key);
         if (webSocketSession != null) {
             ObjectMapper mapper = new ObjectMapper();
             TextMessage returnMessage = new TextMessage(mapper.writeValueAsString(messageEntity));
@@ -68,5 +80,11 @@ public class MyWebSocket extends TextWebSocketHandler {
         UriComponents uriComponents = UriComponentsBuilder.fromUri(session.getUri()).build();
         String token = Objects.requireNonNull(uriComponents.getQueryParams().getFirst("token")).replace("%22", "");
         return Objects.requireNonNull(JWTUtils.getUserId(token)).toString();
+    }
+
+    private String getUserRole(WebSocketSession session) {
+        UriComponents uriComponents = UriComponentsBuilder.fromUri(session.getUri()).build();
+        String token = Objects.requireNonNull(uriComponents.getQueryParams().getFirst("token")).replace("%22", "");
+        return Objects.requireNonNull(JWTUtils.getUserRole(token));
     }
 }

@@ -13,8 +13,4 @@ public class LogControllerTest {
     @Autowired
     private LogController logController;
 
-    @Test
-    public void getAllLogs() {
-        System.out.println(logController.getAllLogs());
-    }
 }

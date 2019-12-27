@@ -49,7 +49,7 @@ Date.prototype.Format = function(fmt) {
 // 1  消息通知
 // 2  购买通知
 if ('WebSocket' in window) {
-  Vue.prototype.$webscoket = new WebSocket('ws://localhost:8080/ejile/myWebSocket')
+  // Vue.prototype.$webscoket = new WebSocket('ws://localhost:8080/ejile/myWebSocket')
   Vue.prototype.$buyNotification = new WebSocket('ws://localhost:8080/ejile/buyNotification')
   // 设置新订单通知
   Vue.prototype.$buyNotification.onmessage = function(res) {
