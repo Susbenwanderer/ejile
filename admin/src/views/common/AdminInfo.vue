@@ -29,7 +29,7 @@
         name: 'mai',
         sex: '男',
         age: 20,
-        school: 'XMU'
+        school: 'DGUT'
       }
     }
   }

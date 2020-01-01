@@ -37,7 +37,7 @@ public class ContactController {
     @RequestMapping("/contact/getInfoBySidCid")
     public ResponseBean getContactInfoBySidCid(int sid, int cid) {
         List<Contact> contactList = contactService.queryContactBySIDCID(sid, cid);
-        if (contactList == null) {
+        if (contactList.isEmpty()) {
             contactList = new ArrayList<>();
             Shop shop = shopService.queryShopById(sid);
             Consumer consumer = consumerService.queryConsumerById(cid);
