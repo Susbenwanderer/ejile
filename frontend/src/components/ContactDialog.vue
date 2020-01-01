@@ -6,7 +6,7 @@
           <!--   聊天人员       -->
           <el-badge :is-dot="isDot(u)">{{ uName(u) }}</el-badge>
         </div>
-        <div style="background-color: #FFCD56;height: 1px;width: 160px;" />
+        <div style="background-color: #008836;height: 1px;width: 160px;" />
       </el-aside>
       <el-main style="padding-top: 0px;padding-bottom: 0px">
         <div id="chatDiv" ref="chatDiv" class="chatDiv">
@@ -27,7 +27,7 @@
               style="display: flex;justify-content: flex-start;align-items: center;box-sizing: border-box;"
             >
               <div
-                style="display: inline-flex;border-style: solid;border-width: 1px;border-color: #FFCD56;border-radius: 5px;padding: 5px 8px 5px 8px"
+                style="display: inline-flex;border-style: solid;border-width: 1px;border-color: #008836;border-radius: 5px;padding: 5px 8px 5px 8px"
               >
                 {{ message.content }}
               </div>
@@ -39,7 +39,7 @@
               style="display: flex;justify-content: flex-end;align-items: center;box-sizing: border-box;"
             >
               <div
-                style="display: inline-flex;border-style: solid;border-width: 1px;border-color: #FFCD56;border-radius: 5px;padding: 5px 8px 5px 8px;margin-right: 3px;background-color: #9eea6a"
+                style="display: inline-flex;border-style: solid;border-width: 1px;border-color: #008836;border-radius: 5px;padding: 5px 8px 5px 8px;margin-right: 3px;background-color: #9eea6a"
               >
                 {{ message.content }}
               </div>
@@ -269,7 +269,7 @@ export default {
     align-items: center;
     width: 160px;
     height: 40px;
-    border-color: #FFCD56;
+    border-color: #008836;
     border-left-style: solid;
     border-top-style: solid;
     border-right-style: solid;
@@ -277,7 +277,7 @@ export default {
     cursor: pointer
   }
   .chatDiv {
-    border-color: #FFCD56;
+    border-color: #008836;
     border-style: solid;
     border-radius: 5px;
     border-width: 1px;
@@ -292,6 +292,6 @@ export default {
     padding-right: 25px
   }
   .currentChatFriend {
-    background-color: #FFCD56;
+    background-color: #008836;
   }
 </style>

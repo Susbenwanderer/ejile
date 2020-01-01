@@ -17,6 +17,7 @@ import Info from '@/views/consumer/info/Info'
 import Password from '@/views/consumer/info/Password'
 import Setting from '@/views/consumer/info/Setting'
 import History from '@/views/consumer/info/History'
+import historyComment from '@/views/consumer/info/HistoryComment'
 import ShopInfo from '@/views/shop/info/ShopInfo'
 import MenuEdit from '@/views/shop/menu_edit/MenuEdit'
 import SInfo from '@/views/shop/info/SInfo'
@@ -109,6 +110,10 @@ const constRouter = [
       {
         path: '/consumerinfo/history',
         component: History
+      },
+      {
+        path: '/consumerinfo/historyComment',
+        component: historyComment
       },
       {
         path: '/consumerinfo/password',

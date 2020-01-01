@@ -18,7 +18,7 @@
         <el-container>
           <el-aside class="deliver-1" width="50%">
             <div class="deliver">
-              <img class="img-responsive" src="./images/deliver 3.png" alt="" @click="$router.push('/service')">
+              <img class="img-responsive" src="./images/waimai.png" alt="" @click="$router.push('/service')">
             </div>
           </el-aside>
           <el-container>
@@ -54,6 +54,8 @@
       </div>
     </div>
 
+
+    <!--
     <div>
       <div class="cases">
         <h1 style="color: darkgray">C A S E</h1>
@@ -118,6 +120,9 @@
         </el-col>
       </el-row>
     </div>
+    -->
+
+
 
     <div class="join-container">
       <el-row>
@@ -146,7 +151,7 @@ export default {
 
 <style scoped>
   .background-img{
-    background-image: url("./images/orange.jpg");
+    background-image: url("./images/school.jpeg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -154,23 +159,23 @@ export default {
 
   .el-button--primary {
     color: #fff;
-    background-color: #FFCD56;
-    border-color: #FFCD56;
+    background-color: #008836;
+    border-color: #008836;
     font-weight: bolder;
     font-size: large;
-    margin: 500px 100px 200px 100px;
+    margin: 300px 100px 450px 100px;
   }
 
   .el-button--primary:hover{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
   }
 
   .el-button--primary:focus{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
   }
 
   .title-0{
@@ -196,7 +201,7 @@ export default {
   }
 
   .el-icon:hover{
-    color:#FFCD56;
+    color:#008836;
     font-size: 35px;
     cursor: pointer;
   }
@@ -222,7 +227,7 @@ export default {
   }
 
   .card-title:hover{
-    color:#FFCD56;
+    color:#008836;
     cursor: pointer;
   }
 
@@ -245,9 +250,9 @@ export default {
   }
 
   .join-btn:hover{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
     margin: 20px 0 100px 0;
     width:180px;
     height:60px;
@@ -255,9 +260,9 @@ export default {
   }
 
   .join-btn:focus{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
   }
 */
 

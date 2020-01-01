@@ -224,10 +224,11 @@ export default {
 <style scoped>
   .top {
     margin-bottom: 1.25rem;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
   }
 
   #nav-fixed {
-    background: rgb(255, 205, 86);
+    background: white;
     border: 0;
     border-radius: 10px;
   }
@@ -254,15 +255,17 @@ export default {
     border-radius: 0.625rem;
     cursor: pointer;
     transition: all 0.5s;
+
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.9);
   }
 
   .logo {
-    background-image: url("images/orange_logo.png");
+    background-image: url("images/dgut.jpg");
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     width: 50px;
-    height: 40px;
+    height: 50px;
     background-repeat: no-repeat;
     position: relative;
   }
@@ -280,8 +283,8 @@ export default {
   }
 
   .dropdown:hover {
-    color: #FFCD56;
-    border-color: #FFCD56;
+    color: #008836;
+    border-color: #008836;
     background-color: rgba(255, 205, 86, 0.1);
   }
 </style>

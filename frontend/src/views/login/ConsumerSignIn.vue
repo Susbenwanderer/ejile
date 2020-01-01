@@ -134,11 +134,11 @@ export default {
 
 <style scoped>
   .food-img{
-    background-image: url("../images/orange.jpg");
+    background-image: url("../images/school.jpeg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
-    height:100%;
+    height:800px;
   }
   .signIn-box {
     border: 1px solid #DCDFE6;

@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
   .food-img{
-    background-image: url("../images/orange.jpg");
+    background-image: url("../images/school.jpeg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -65,23 +65,23 @@ export default {
 
   .el-button--primary {
     color: #fff;
-    background-color: #FFCD56;
-    border-color: #FFCD56;
+    background-color: #008836;
+    border-color: #008836;
     font-weight: bolder;
     font-size: large;
-    margin: 500px 100px 200px 100px;
+    margin: 300px 100px 400px 100px;
   }
 
   .el-button--primary:hover{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
   }
 
   .el-button--primary:focus{
-    color: #FFCD56;
+    color: #008836;
     background-color: #fff;
-    border-color: #FFCD56;
+    border-color: #008836;
   }
   /*
 .shop{

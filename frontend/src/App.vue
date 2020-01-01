@@ -46,7 +46,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
-  background-color: rgba(250,250,250,0.4);
+  background-color: #ededed;
 }
 
 .el-table .warning-row {

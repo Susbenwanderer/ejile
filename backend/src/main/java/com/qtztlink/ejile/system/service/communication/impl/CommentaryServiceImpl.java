@@ -38,4 +38,9 @@ public class CommentaryServiceImpl implements CommentaryService {
     public Commentary queryCommentaryByCoID(Integer CoID) {
         return this.commentaryDao.queryCommentaryByCoID(CoID);
     }
+
+    @Override
+    public List<Commentary> queryCommentaryByUID(Integer uid) {
+        return this.commentaryDao.queryCommentaryByUID(uid);
+    }
 }

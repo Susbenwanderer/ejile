@@ -10,4 +10,6 @@ public interface CommentaryDao {
     int update(Commentary commentary); // 修改评论
     List<Commentary> queryCommentaryBySID(Integer SID);
     Commentary queryCommentaryByCoID(Integer CoID);
+
+    List<Commentary> queryCommentaryByUID(Integer uid);
 }

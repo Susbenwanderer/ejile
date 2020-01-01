@@ -165,13 +165,13 @@
     color: #333;
   }
   .title:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
-    background-color: rgba(255,205,86,0.1);
+    color: white;
+    border-color: #008836;
+    background-color: #008836;
   }
   .title:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
-    background-color: rgba(255,205,86,0.1);
+    color:white;
+    border-color: #008836;
+    background-color: #008836;
   }
 </style>

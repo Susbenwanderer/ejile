@@ -6,7 +6,7 @@
     <el-row>
       <div>
         <!--        顶部工具-->
-        <el-radio-group v-model="radio" fill="#FFCD56">
+        <el-radio-group v-model="radio" fill="#008836">
           <!--          <el-radio-button label="全部" class="radio"></el-radio-button>-->
           <!--          <el-radio-button label="主食"></el-radio-button>-->
           <!--          <el-radio-button label="小吃"></el-radio-button>-->
@@ -134,30 +134,30 @@ export default {
     margin:auto auto auto 25px;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active{
-    background-color: #FFCD56 !important;
+    background-color: #008836 !important;
   }
   .el-pagination.is-background .el-pager li:hover{
-    color: #FFCD56 !important;
+    color: #008836 !important;
   }
   .input{
-    border-color: #FFCD56;
+    border-color: #008836;
   }
   .search{
     margin:10px;
   }
 .search:hover{
-  color:#FFCD56;
-  border-color: #FFCD56;
+  color:#008836;
+  border-color: #008836;
   background-color: rgba(255,205,86,0.1);
 }
   .trolley:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .trolley:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
 

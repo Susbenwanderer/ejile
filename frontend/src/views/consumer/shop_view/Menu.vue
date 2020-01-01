@@ -14,7 +14,7 @@
         </el-dropdown-menu>
       </el-dropdown>
 
-      <el-radio-group v-model="radio" fill="#FFCD56">
+      <el-radio-group v-model="radio" fill="#008836">
         <el-radio-button label="全部" class="radio" @click.native="dataInPage = goodsList" />
         <el-radio-button label="主食" @click.native="dataInPage = goodsList.filter(data => ('主食' === data.type))" />
         <el-radio-button label="小吃" @click.native="dataInPage = goodsList.filter(data => ('小吃' === data.type))" />
@@ -80,7 +80,7 @@
               >选规格</el-button>
             </el-header>
             <el-main>
-              <span style="float: left;color:#FFCD56; font-weight: bolder;">￥{{ o.price }}</span>
+              <span style="float: left;color:#008836; font-weight: bolder;">￥{{ o.price }}</span>
               <el-button
                 v-show="getMapCnt(o.id) > 0"
                 type="danger"
@@ -453,7 +453,7 @@ export default {
     min-height: 80px;
   }
   .bg-white{
-    background: #FDFDFD;
+    background: #ededed;
   }
   .shop-name{
     margin:10px 20px 10px;
@@ -506,35 +506,35 @@ export default {
     margin:auto auto auto 25px;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active{
-    background-color: #FFCD56 !important;
+    background-color: #008836 !important;
   }
   .el-pagination.is-background .el-pager li:hover{
-    color: #FFCD56 !important;
+    color: #008836 !important;
   }
   .input{
-    border-color: #FFCD56;
+    border-color: #008836;
   }
   .search{
     margin:10px;
   }
   .search:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .search:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .trolley:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .trolley:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .dia-btn{

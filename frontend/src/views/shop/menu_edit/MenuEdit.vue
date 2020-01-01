@@ -300,13 +300,13 @@ export default {
     padding-bottom: 0;
   }
   .button-new-tag:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .button-new-tag:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .login-btn {

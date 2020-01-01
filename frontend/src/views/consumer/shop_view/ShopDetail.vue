@@ -1,5 +1,5 @@
 <template>
-  <div v-if="found">
+  <div v-if="found" id="sd-shop">
     <el-row>
       <el-col :span="1">
         <div class="grid-content bg-white" />
@@ -153,6 +153,10 @@ export default {
 </script>
 
 <style scoped>
+  #sd-shop{
+    height: 800px;
+  }
+
   .el-row {
     margin-bottom: 20px;
   }
@@ -164,7 +168,7 @@ export default {
     min-height: 80px;
   }
   .bg-white{
-    background: #FDFDFD;
+    background: #ededed;
   }
   .shop-name{
     margin:10px 20px 10px;
@@ -217,35 +221,35 @@ export default {
     margin:auto auto auto 25px;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active{
-    background-color: #FFCD56 !important;
+    background-color: #008836 !important;
   }
   .el-pagination.is-background .el-pager li:hover{
-    color: #FFCD56 !important;
+    color: #008836 !important;
   }
   .input{
-    border-color: #FFCD56;
+    border-color: #008836;
   }
   .search{
     margin:10px;
   }
   .search:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .search:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .trolley:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .trolley:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .dia-btn{
@@ -253,13 +257,13 @@ export default {
     border-color: #EBB563;
   }
   .title:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .title:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
 </style>

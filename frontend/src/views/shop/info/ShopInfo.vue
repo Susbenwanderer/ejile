@@ -70,13 +70,13 @@ export default {
 
 <style scoped>
   .title:hover{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
   .title:focus{
-    color:#FFCD56;
-    border-color: #FFCD56;
+    color:#008836;
+    border-color: #008836;
     background-color: rgba(255,205,86,0.1);
   }
 </style>

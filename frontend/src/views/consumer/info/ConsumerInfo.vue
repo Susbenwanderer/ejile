@@ -13,6 +13,12 @@
               <i class="el-icon-s-order" />
               <span slot="title">历史订单</span>
             </el-menu-item>
+
+            <el-menu-item index="6" class="title" @click="$router.push('/consumerinfo/historyComment')">
+              <i class="el-icon-chat-line-round" />
+              <span slot="title">历史评价</span>
+            </el-menu-item>
+
             <el-menu-item index="3" class="title" @click="$router.push('/consumerinfo/contact')">
               <i class="el-icon-bell" />
               <span slot="title">店家互动</span>
@@ -52,6 +58,8 @@ export default {
         return '4'
       } else if (this.$route.path === '/consumerinfo/setting') {
         return '5'
+      } else if (this.$route.path === '/consumerinfo/historyComment') {
+        return '6'
       } else {
         return '1'
       }
@@ -70,13 +78,13 @@ export default {
 
 <style scoped>
 .title:hover{
-  color:#FFCD56;
-  border-color: #FFCD56;
+  color:#008836;
+  border-color: #008836;
   background-color: rgba(255,205,86,0.1);
 }
 .title:focus{
-  color:#FFCD56;
-  border-color: #FFCD56;
+  color:#008836;
+  border-color: #008836;
   background-color: rgba(255,205,86,0.1);
 }
 </style>

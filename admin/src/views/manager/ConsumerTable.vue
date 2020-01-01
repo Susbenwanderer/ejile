@@ -269,7 +269,7 @@
     margin: 10px 30px 10px 30px;
   }
   .login-btn:hover{
-    background: rgba(230,162,60,0.7);
+    background: #008836;
   }
   .reset-btn{
     margin:10px 30px 10px 30px;

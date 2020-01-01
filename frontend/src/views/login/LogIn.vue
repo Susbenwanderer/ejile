@@ -160,7 +160,7 @@ export default {
 
 <style scoped>
   .food-img{
-    background-image: url("../images/orange.jpg");
+    background-image: url("../images/school.jpeg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;

@@ -602,7 +602,7 @@ export default {
     margin-bottom: 0;
   }
   .price{
-    color:#FFCD56;
+    color:#008836;
     font-size:30px;
   }
   .box-card{

@@ -102,4 +102,20 @@ public class CommentaryDaoImpl implements CommentaryDao {
             return null;
         }
     }
+
+
+    @Override
+    public List<Commentary> queryCommentaryByUID(Integer uid) {
+        String sql = "select * from commentary_view where Cid = ? order by ctime desc ";
+        Object[] args = {uid};
+        int[] argTypes = {Types.INTEGER};
+        List<Commentary> commentaryList = this.jdbcTemplate.query(sql, args, argTypes,
+                new CommentaryMapper());
+        if(commentaryList != null && commentaryList.size() >0) {
+            return commentaryList;
+        }
+        else {
+            return null;
+        }
+    }
 }

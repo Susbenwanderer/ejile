@@ -100,6 +100,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$db.get('USER_ID'))
     this.$get('/consumer/getOrderHistory', {
       CID: this.$db.get('USER_ID')
     }).then(res => {
