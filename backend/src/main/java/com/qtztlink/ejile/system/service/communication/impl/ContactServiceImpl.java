@@ -1,6 +1,7 @@
 package com.qtztlink.ejile.system.service.communication.impl;
 
 import com.qtztlink.ejile.system.dao.communication.ContactDao;
+import com.qtztlink.ejile.system.dao.communication.impl.ContactDaoImpl;
 import com.qtztlink.ejile.system.model.communication.Contact;
 import com.qtztlink.ejile.system.service.communication.ContactService;
 import com.qtztlink.ejile.system.service.user.ConsumerService;
@@ -17,11 +18,7 @@ import javax.persistence.criteria.Root;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 @Service("contactService")
 public class ContactServiceImpl implements ContactService {
@@ -32,6 +29,8 @@ public class ContactServiceImpl implements ContactService {
     private ConsumerService consumerService;
     @Resource
     private ShopService shopService;
+    @Autowired
+    private ContactDaoImpl contactDaoImpl;
 
     @Override
     public Contact add(Contact contact) {
@@ -40,6 +39,12 @@ public class ContactServiceImpl implements ContactService {
         contact.setIsRead("0");
         return contactDao.save(contact);
     }
+
+    @Override
+    public List<Map<String, Object>> queryAllContact() {
+        return this.contactDaoImpl.queryAllContact();
+    }
+
 
     @Override
     public List<Contact> queryContactBySIDCID(Integer SID, Integer CID) {

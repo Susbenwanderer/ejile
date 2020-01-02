@@ -153,10 +153,10 @@ export default {
           // this.$router.go(-1)
           this.$router.push('/index')
           location.reload()
-        }).catch((err) => {
+        }).catch(err => {
           // 报错
           this.$message({
-            message: '服务器错误啦',
+            message: '服务器错误啦' + err,
             type: 'error',
             center: true
           })

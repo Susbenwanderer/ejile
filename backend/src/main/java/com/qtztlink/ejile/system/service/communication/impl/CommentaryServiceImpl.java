@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("commentaryService")
 public class CommentaryServiceImpl implements CommentaryService {
@@ -27,6 +28,11 @@ public class CommentaryServiceImpl implements CommentaryService {
     @Override
     public int update(Commentary commentary) {
         return this.commentaryDao.update(commentary);
+    }
+
+    @Override
+    public List<Map<String, Object>> queryAllCommentary() {
+        return this.commentaryDao.queryAllCommentary();
     }
 
     @Override

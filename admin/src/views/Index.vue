@@ -21,10 +21,14 @@
               <i class="el-icon-s-order"></i>
               <span slot="title">订单管理</span>
             </el-menu-item>
-<!--            <el-menu-item index="5" class="title" @click="$router.push('/chat')">-->
-<!--              <i class="el-icon-chat-line-round"></i>-->
-<!--              <span slot="title">互动管理</span>-->
-<!--            </el-menu-item>-->
+            <el-menu-item index="5" class="title" @click="$router.push('/commentary')">
+              <i class="el-icon-s-comment"></i>
+              <span slot="title">评价管理</span>
+            </el-menu-item>
+           <el-menu-item index="6" class="title" @click="$router.push('/chat')">
+             <i class="el-icon-chat-line-round"></i>
+              <span slot="title">互动管理</span>
+            </el-menu-item>
             <el-menu-item index="6" class="title" @click="$router.push('/monitor')">
               <i class="el-icon-monitor"></i>
               <span slot="title">访问监控</span>
@@ -38,7 +42,7 @@
 <!--      header -->
       <el-header style="text-align: right; font-size: 12px">
         <el-dropdown>
-<!--          <i class="el-icon-setting" style="margin-right: 15px"></i>-->
+        <i class="el-icon-setting" style="margin-right: 15px"></i>
           <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item class="title" @click.native="$router.push('/admininfo')">个人中心</el-dropdown-item>
@@ -46,7 +50,7 @@
             <el-dropdown-item @click.native="signOut" class="title">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-<!--        <span>{{userName}}</span>-->
+<!--       <span>{{userName}}</span>-->
       </el-header>
 
 <!--      main -->

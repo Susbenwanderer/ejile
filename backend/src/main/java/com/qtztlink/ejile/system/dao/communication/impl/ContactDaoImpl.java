@@ -10,12 +10,18 @@ import org.springframework.stereotype.Repository;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
-//@Repository("contactDao")
+@Repository("contactDaoImpl")
 public class ContactDaoImpl  {
 //
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public List<Map<String, Object>> queryAllContact() { //补充后台查询所有的聊天记录
+        String sql = "select * from contact";
+        return this.jdbcTemplate.queryForList(sql);
+    }
 //
 //    @Override
 //    public int add(Contact contact) {

@@ -3,6 +3,7 @@ package com.qtztlink.ejile.system.service.communication;
 import com.qtztlink.ejile.system.model.communication.Commentary;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentaryService {
     int add(Commentary commentary); // 添加评论
@@ -12,4 +13,6 @@ public interface CommentaryService {
     Commentary queryCommentaryByCoID(Integer CoID);
 
     List<Commentary> queryCommentaryByUID(Integer uid);
+
+    List<Map<String, Object>> queryAllCommentary();
 }

@@ -5,9 +5,12 @@ import com.qtztlink.ejile.common.authentication.JWTUtils;
 import com.qtztlink.ejile.common.bean.ResponseBean;
 import com.qtztlink.ejile.common.exception.UnauthorizedException;
 import com.qtztlink.ejile.common.utils.MD5Util;
+import com.qtztlink.ejile.system.model.communication.Commentary;
 import com.qtztlink.ejile.system.model.user.Admin;
 import com.qtztlink.ejile.system.model.user.Consumer;
 import com.qtztlink.ejile.system.model.user.Shop;
+import com.qtztlink.ejile.system.service.communication.CommentaryService;
+import com.qtztlink.ejile.system.service.communication.ContactService;
 import com.qtztlink.ejile.system.service.goods.OrderHistoryService;
 import com.qtztlink.ejile.system.service.user.AdminService;
 import com.qtztlink.ejile.system.service.user.ConsumerService;
@@ -32,7 +35,13 @@ public class AdminController {
     private OrderHistoryService orderHistoryService;
 
     @Autowired
+    private CommentaryService commentaryService;
+
+    @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private ContactService contactService;
 
     @JsonView(Consumer.AdminView.class)
     @RequestMapping("/admin/queryAllConsumers")
@@ -196,6 +205,18 @@ public class AdminController {
     @ResponseBody
     public List<Map<String, Object>> getAllOrderHistory() {
         return this.orderHistoryService.queryAllOrderHistory();
+    }
+
+    @RequestMapping("/admin/getAllCommentary")
+    @ResponseBody
+    public List<Map<String, Object>> getAllCommentary() {
+        return this.commentaryService.queryAllCommentary();
+    }
+
+    @RequestMapping("/admin/getAllContact")
+    @ResponseBody
+    public List<Map<String, Object>> getAllContact() {
+        return this.contactService.queryAllContact();
     }
 
     @PostMapping("/admin/changePassword")

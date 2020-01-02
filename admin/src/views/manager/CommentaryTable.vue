@@ -20,7 +20,7 @@
     <el-col :span="4" :offset="4">
       <export-excel v-if="dataInPage() != null" :list="dataInPage()"
                     :t-header="['#ID', '交易时间', '购买者', '商家', '商品名', '购买数量', '总价', '状态']"
-                    :t-value="['id', 'c_time', 'c_name', 's_name', 'goods_name', 'num', 'total', 'state']"></export-excel>
+                    :t-value="['id', 'ctime', 'cname', 'sname', 'goodsName', 'num', 'total', 'state']"></export-excel>
     </el-col>
 
     <el-table :data="dataInPage().slice((currentPage-1)*cntPerPage,currentPage*cntPerPage)" style="width: 100%">
@@ -33,23 +33,29 @@
       </el-table-column>
       <el-table-column
         sortable
-        prop="c_time"
-        label="聊天时间"
+        prop="ctime"
+        label="评论时间"
         width="230">
       </el-table-column>
       <el-table-column
-        prop="c_name"
-        label="顾客"
+        prop="cname"
+        label="消费者"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="s_name"
+        prop="sname"
         label="商家"
         width="180">
       </el-table-column>
       <el-table-column
         prop="content"
-        label="聊天内容"
+        label="评论内容"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        sortable
+        prop="stars"
+        label="评分(5星满)"
         width="180">
       </el-table-column>
 
@@ -79,11 +85,11 @@
       return {
         commentaryList: [
           {
-            c_time: "2019-06-27T18:03:21.000+0000",
+            ctime: "2019-06-27T18:03:21.000+0000",
             cid: 1,
-            c_name: "Zhang San",
+            cname: "Zhang San",
             id: 4,
-            s_name: "mai",
+            sname: "mai",
             sid: 1,
             content: "Just so so",
             stars: 3
@@ -101,7 +107,7 @@
       }
     },
     created() {
-      this.$get('/admin/getAllContact').then(res => {
+      this.$get('/admin/getAllCommentary').then(res => {
         this.commentaryList = res.data
       }).catch(err => console.log(err))
     },
@@ -118,11 +124,11 @@
       dataInPage() {
         let data = this.commentaryList
           .filter(data =>
-            !this.searchConsumer || data.c_name.toLowerCase().includes(this.searchConsumer.toLowerCase()))
+            !this.searchConsumer || data.cname.toLowerCase().includes(this.searchConsumer.toLowerCase()))
           .filter(data =>
-            !this.searchShop || data.s_name.toLowerCase().includes(this.searchShop.toLowerCase()))
+            !this.searchShop || data.sname.toLowerCase().includes(this.searchShop.toLowerCase()))
           .filter(data =>
-            !this.dateValue || (new Date(this.dateValue[0]) <= new Date(data.c_time) && new Date(data.c_time) <=  new Date(this.dateValue[1])))
+            !this.dateValue || (new Date(this.dateValue[0]) <= new Date(data.ctime) && new Date(data.ctime) <=  new Date(this.dateValue[1])))
 
         this.currentPage = Math.min(this.currentPage, Math.ceil(data.length / this.cntPerPage))
         return data

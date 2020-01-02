@@ -7,6 +7,7 @@ import ConsumerTable from "../views/manager/ConsumerTable"
 import ShopTable from "../views/manager/ShopTable"
 import Home from "../views/common/Home"
 import OrderTable from "../views/manager/OrderTable"
+import CommentaryTable from "../views/manager/CommentaryTable"
 import ChatTable from "../views/manager/ChatTable"
 import Monitor from "../views/monitor/Monitor"
 import AdminInfo from "../views/common/AdminInfo"
@@ -43,6 +44,10 @@ let router = new Router({
         {
           path: '/order',
           component: OrderTable
+        },
+        {
+          path: '/commentary',
+          component: CommentaryTable
         },
         {
           path: '/chat',

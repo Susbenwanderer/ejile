@@ -7,7 +7,7 @@ moment.locale('zh-cn')
 
 // 统一配置
 let REQUEST = axios.create({
-  baseURL: 'http://localhost:8080/ejile/',
+  baseURL: process.env.BASE_URL,
   responseType: 'json',
   validateStatus (status) {
     // 200 外的状态码都认定为失败
@@ -17,7 +17,7 @@ let REQUEST = axios.create({
 
 /////////////////
 let SYS_REQUEST = axios.create({
-  baseURL: 'http://localhost:8080/ejile/',
+  baseURL: process.env.BASE_URL,
   responseType: 'json',
   validateStatus (status) {
     // 200 外的状态码都认定为失败

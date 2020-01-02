@@ -1,5 +1,6 @@
 package com.qtztlink.ejile.system.controller.communication;
 
+import com.qtztlink.ejile.common.annotation.Log;
 import com.qtztlink.ejile.common.bean.ResponseBean;
 import com.qtztlink.ejile.common.exception.UnauthorizedException;
 import com.qtztlink.ejile.system.model.communication.Commentary;
@@ -94,6 +95,7 @@ public class CommentaryController {
         }
     }
 
+    @Log("用户评论")
     @RequestMapping("/commentary/addCommentary")
     @ResponseBody
     public ResponseBean addCommentary(

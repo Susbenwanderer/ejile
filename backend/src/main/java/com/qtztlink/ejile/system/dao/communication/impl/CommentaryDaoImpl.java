@@ -10,12 +10,19 @@ import org.springframework.stereotype.Repository;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 @Repository("commentaryDao")
 public class CommentaryDaoImpl implements CommentaryDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public List<Map<String, Object>> queryAllCommentary() {
+        String sql = "select * from commentary_view";
+        return this.jdbcTemplate.queryForList(sql);
+    }
 
     @Override
     public int add(Commentary commentary) {

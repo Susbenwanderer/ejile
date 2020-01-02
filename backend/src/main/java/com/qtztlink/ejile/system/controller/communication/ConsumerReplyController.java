@@ -1,5 +1,6 @@
 package com.qtztlink.ejile.system.controller.communication;
 
+import com.qtztlink.ejile.common.annotation.Log;
 import com.qtztlink.ejile.common.bean.ResponseBean;
 import com.qtztlink.ejile.common.exception.UnauthorizedException;
 import com.qtztlink.ejile.system.model.communication.ConsumerReply;
@@ -22,6 +23,7 @@ public class ConsumerReplyController {
     @Autowired
     private ConsumerReplyService consumerReplyService;
 
+    @Log("用户回复")
     @RequestMapping("/consumerReply/add")
     @ResponseBody
     public ResponseBean addConsumerReply(

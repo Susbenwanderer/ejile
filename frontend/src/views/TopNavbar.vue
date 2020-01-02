@@ -160,7 +160,7 @@ export default {
     const that = this
     if ((typeof this.userToken === 'string')) {
       if ('WebSocket' in window) {
-        this.$root.$myWebscoket = new WebSocket('ws://localhost:8080/ejile/myWebSocket?token=' + this.userToken.valueOf())
+        this.$root.$myWebscoket = new WebSocket('ws://' + process.env.BASE_URL.replace('http://', '') + 'myWebSocket?token=' + this.userToken.valueOf())
         this.$root.$myWebscoket.onmessage = function(res) {
           if (that.$route.path !== '/consumerinfo/contact') {
             const data = JSON.parse(res.data)
